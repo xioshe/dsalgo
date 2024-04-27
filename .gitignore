@@ -11,7 +11,15 @@ target/
 *.iws
 *.iml
 *.ipr
-.idea
+.idea/
+.idea/.gitignore
+.idea/dictionaries
+.idea/encodings.xml
+.idea/jpa-buddy.xml
+.idea/kotlinc.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/git_toolbox_prj.xml
 
 ### Eclipse ###
 .apt_generated
