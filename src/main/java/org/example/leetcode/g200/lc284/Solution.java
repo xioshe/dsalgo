@@ -1,4 +1,6 @@
-package org.example.leetcode.g200.lc284
+package org.example.leetcode.g200.lc284;
+
+import java.util.Iterator;
 
 /**
  * 请你在设计一个迭代器，在集成现有迭代器拥有的 hasNext 和 next 操作的基础上，还额外支持 peek 操作。
@@ -45,24 +47,36 @@ package org.example.leetcode.g200.lc284
 // Kotlin Iterator reference:
 // https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-iterator/
 
-class PeekingIterator(val iterator: Iterator<Int>) : Iterator<Int> {
+class Solution {
+    static class PeekingIterator implements Iterator<Integer> {
+        private Iterator<Integer> iterator;
+        private Integer nextElement;
 
-    private var nextElement: Int = iterator.next()
+        public PeekingIterator(Iterator<Integer> iterator) {
+            this.iterator = iterator;
+            nextElement = iterator.next();
+        }
 
-    fun peek(): Int {
-        return nextElement
+        Integer peek() {
+            return nextElement;
+
     }
 
-    override fun next(): Int {
-        val result = nextElement
-        nextElement = if (iterator.hasNext()) {
-            iterator.next()
-        } else error("")
-        return result
+        @Override
+        public Integer next() {
+            var result = nextElement;
+
+            if (!iterator.hasNext()) {
+                throw new RuntimeException();
+            }
+            nextElement = iterator.next();
+            return result;
     }
 
-    override fun hasNext(): Boolean {
-        return nextElement != null
+        @Override
+        public boolean hasNext() {
+            return nextElement != null;
+        }
     }
 }
 
